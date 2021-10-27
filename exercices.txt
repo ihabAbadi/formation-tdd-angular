@@ -1,0 +1,5 @@
+Exercice test d'un composant
+
+On image un composant panier qui doit afficher le total du panier et la liste des produits dans un tableau.
+- Créer un test unitaire pour vérifier que le total est bien affiché en html.
+- Créer un test pour vérifier que le nombre de lignes du tableau html est égal au nombre produits panier.
