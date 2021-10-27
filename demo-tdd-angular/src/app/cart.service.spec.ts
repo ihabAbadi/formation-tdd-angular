@@ -55,4 +55,30 @@ describe('CartService', () => {
     //Assertion avec jasmine se fait à l'aide de expect, et les matchers de jasmine
     expect(result).toBeFalse()
   });
+
+  it('cart number with empty cart', () => {
+    //Arrange
+    //let cartService: CartService = new CartService()
+    cartService.products = []
+
+    //Act
+    const result = cartService.productsNumber()
+
+    //Assert
+    //Assertion avec jasmine se fait à l'aide de expect, et les matchers de jasmine
+    expect(result).toBe(0)
+  });
+
+  it('cart product number with  1 product and multity quantity', () => {
+    //Arrange
+    //let cartService: CartService = new CartService()
+    cartService.products = [{title  : 'product 1', price : 10, qty: 3}]
+
+    //Act
+    const result = cartService.productsNumber()
+
+    //Assert
+    //Assertion avec jasmine se fait à l'aide de expect, et les matchers de jasmine
+    expect(result).toBe(3)
+  });
 });

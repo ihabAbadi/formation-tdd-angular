@@ -25,7 +25,11 @@ export class CartService {
   }
 
   //Get number of distinct products
-  productsNumber() {
-
+  productsNumber():number {
+    let total = 0;
+    this.products?.forEach(p => {
+      total += p.qty
+    })
+    return total
   }
 }
