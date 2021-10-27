@@ -72,13 +72,13 @@ describe('CartService', () => {
   it('cart product number with  1 product and multity quantity', () => {
     //Arrange
     //let cartService: CartService = new CartService()
-    cartService.products = [{title  : 'product 1', price : 10, qty: 3}]
+    cartService.products = [{title  : 'product 1', price : 10, qty: 3}, {title  : 'product 1', price : 10, qty: 3}, {title  : 'product 1', price : 10, qty: 4}]
 
     //Act
     const result = cartService.productsNumber()
 
     //Assert
     //Assertion avec jasmine se fait à l'aide de expect, et les matchers de jasmine
-    expect(result).toBe(3)
+    expect(result).toBe(10)
   });
 });

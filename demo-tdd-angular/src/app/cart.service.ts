@@ -31,5 +31,6 @@ export class CartService {
       total += p.qty
     })
     return total
+    //return (this.products) ? this.products[0].qty : 0
   }
 }
