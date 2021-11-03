@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { CartComponent } from './cart.component';
 
@@ -31,5 +32,26 @@ describe('CartComponent', () => {
     const element:HTMLElement = fixture.nativeElement.querySelector('.total')
 
     expect(element.textContent).toEqual('40');
+  });
+
+  it('the number of rows table should be equal to number of product', () => {
+    component.products = [
+      { id: '1', intitule: 'A', price: 0 },
+      { id: '2', intitule: 'B', price: 0 },
+      { id: '3', intitule: 'C', price: 0 },
+    ];
+    fixture.detectChanges();
+    const element: any = fixture.debugElement.queryAll(By.css('.rowProduct'));
+    expect(element.length).toEqual(3);
+  });
+  it('the first row of table should be A', () => {
+    component.products = [
+      { id: '1', intitule: 'A', price: 0 },
+      { id: '2', intitule: 'B', price: 0 },
+      { id: '3', intitule: 'C', price: 0 },
+    ];
+    fixture.detectChanges();
+    const element: any = fixture.debugElement.queryAll(By.css('.rowProduct'));
+    expect(element[0].nativeElement.textContent.trim()).toEqual('A');
   });
 });
