@@ -1,19 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { CartService } from '../cart.service';
+import { ProductComponent } from '../product/product.component';
 
 import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
-
+  let service:CartService
   beforeEach(async () => {
     //Configuration d'un module de test àl'aide de testBed,
     //On déclare nos composants, on importe nos module,...
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
+      declarations: [ CartComponent, ProductComponent ],
+      providers: [CartService]
     })
     .compileComponents();
+    
   });
 
   beforeEach(() => {
@@ -35,14 +39,14 @@ describe('CartComponent', () => {
   });
 
   it('the number of rows table should be equal to number of product', () => {
-    component.products = [
-      { id: '1', intitule: 'A', price: 0 },
-      { id: '2', intitule: 'B', price: 0 },
-      { id: '3', intitule: 'C', price: 0 },
-    ];
+    service = TestBed.inject(CartService)
+    //Pour faire du mock on utilise la spyOn
+    spyOn(service, 'getProductsFromAPI').and.returnValue([{intitule : 'product 1'}])
+    component.products = service.getProductsFromAPI()
+    
     fixture.detectChanges();
     const element: any = fixture.debugElement.queryAll(By.css('.rowProduct'));
-    expect(element.length).toEqual(3);
+    expect(element.length).toEqual(1);
   });
   it('the first row of table should be A', () => {
     component.products = [

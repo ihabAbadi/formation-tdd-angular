@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class CartService {
   products?: Array<any> = new Array();
   constructor() {}
-
+  getProductsFromAPI() {
+    return this.products
+  }
   //Return true if cart is empty
   isCartEmpty() {
     // if(this.products != undefined && this.products?.length > 0) {
