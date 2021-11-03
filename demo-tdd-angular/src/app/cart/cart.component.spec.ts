@@ -31,7 +31,10 @@ describe('CartComponent', () => {
   });
 
   it('test render total cart value when total cart is set to 40 euros', () => {
-    component.totalCart = 40
+    service = TestBed.inject(CartService)
+    //Pour faire du mock on utilise la spyOn
+    spyOn(service, 'totalCart').and.returnValue(40)
+    component.totalCart = service.totalCart()
     fixture.detectChanges()
     const element:HTMLElement = fixture.nativeElement.querySelector('.total')
 
