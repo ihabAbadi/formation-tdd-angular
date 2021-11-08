@@ -1,0 +1,7 @@
+TP Angular TDD,
+
+Réaliser un composant Angular qui permet de répondre à un sondage par Oui ou Non.
+Les questions sont fournies par Un service.
+Les réponse sont également stockés dans un Service.
+
+Le composant, ainsi que les services doivent être réaliser en TDD.
